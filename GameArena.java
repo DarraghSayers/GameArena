@@ -132,7 +132,29 @@ public class GameArena
                 initFX();
             }
         });
-	}
+    }
+
+    /**
+     * Adds arrow to GameArena
+     * @param a
+     */
+    public void addArrow(Arrow a) {
+        Line[] arrowLines = a.getArrowAsLines();
+        for (int i = 0; i < 3; i++) {
+            addLine(arrowLines[i]);
+        }
+    }
+
+    /**
+     * Removes arrow from GameArena
+     * @param a
+     */
+    public void removeArrow(Arrow a) {
+        Line[] arrowLines = a.getArrowAsLines();
+        for (int i = 0; i < 3; i++) {
+            removeLine(arrowLines[i]);
+        }
+    }
 
    private void initFX() {
 

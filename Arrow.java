@@ -20,6 +20,14 @@ public class Arrow
     private String colour;            // The colour of this Arrow
 
     /**
+     * Obtains the 3 lines that make up the arrow
+     * @return Line[] representing the arrow head
+     */
+    public Line[] getArrowAsLines() {
+        return line;
+    }
+    
+    /**
      * Obtains the X coordinte of the start of this arrow.
      * @return the X coordinte of the start of this arrow within the GameArena.
      */
@@ -54,7 +62,6 @@ public class Arrow
     {
         return yEnd;
     }
-
 
     /**
      * Moves the current start position of this Arrow to the given co-ordinates
@@ -156,7 +163,7 @@ public class Arrow
      * @param arena The game arena to add this arrow to.
      *
      */
-    public Arrow(double startX, double startY, double endX, double endY, double w, String col, GameArena arena)
+    public Arrow(double startX, double startY, double endX, double endY, double w, String col)
     {
         xStart = startX;
         yStart = startY;
@@ -170,7 +177,6 @@ public class Arrow
         for (int i=0; i<line.length; i++)
         {
             line[i] = new Line(xStart, yStart, xEnd, yEnd, width, colour);
-            arena.addLine(line[i]);
         }
 
         setArrowHeadPosition(100.0);
