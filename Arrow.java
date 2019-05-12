@@ -20,6 +20,14 @@ public class Arrow
     private String colour;            // The colour of this Arrow
 
     /**
+     * Obtains the 3 lines that make up the arrow
+     * @return Line[] representing the arrow head
+     */
+    public Line[] getArrowAsLines() {
+        return line;
+    }
+    
+    /**
      * Obtains the X coordinte of the start of this arrow.
      * @return the X coordinte of the start of this arrow within the GameArena.
      */
@@ -53,6 +61,26 @@ public class Arrow
     public double getEndY()
     {
         return yEnd;
+    }
+
+    /**
+     * Used to add an arrow to the gameArena as 3 individual lines
+     * @param g GameArena you want to add arrow to
+     */
+    public void addToGameArena(GameArena g) {
+        for (int i = 0; i < 3; i++) {
+            g.addLine(line[i]);
+        }
+    }
+    
+    /**
+     * Used to remove an arrow from GameArena specified
+     * @param g GameArena you want to remove arrow from
+     */
+    public void removeFromGameArena(GameArena g) {
+        for (int i = 0; i < 3; i++) {
+            g.removeLine(line[i]);
+        }
     }
 
 
@@ -156,7 +184,7 @@ public class Arrow
      * @param arena The game arena to add this arrow to.
      *
      */
-    public Arrow(double startX, double startY, double endX, double endY, double w, String col, GameArena arena)
+    public Arrow(double startX, double startY, double endX, double endY, double w, String col)
     {
         xStart = startX;
         yStart = startY;
@@ -170,7 +198,6 @@ public class Arrow
         for (int i=0; i<line.length; i++)
         {
             line[i] = new Line(xStart, yStart, xEnd, yEnd, width, colour);
-            arena.addLine(line[i]);
         }
 
         setArrowHeadPosition(100.0);
